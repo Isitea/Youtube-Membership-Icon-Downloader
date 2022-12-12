@@ -2,14 +2,18 @@
   "name": "youtube-membership-icon-downloader",
   "version": "1.0.0",
   "description": "Youtube Membership Icon Downloader",
-  "main": "main.ts",
+  "type": "module",
+  "main": "ymid.ts",
   "scripts": {
-    "build": "tsc && exit 1"
+    "build": "tsc && node build.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@node-minify/core": "^7.1.0",
+    "@node-minify/terser": "^7.1.0",
+    "js-base64": "^3.7.3",
     "typescript": "^4.9.4"
   }
 }

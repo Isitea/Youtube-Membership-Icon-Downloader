@@ -87,10 +87,22 @@ specifyPerks()
     .then( makeArchive )
     .then( URL.createObjectURL )
     .then( url => {
+        let atVideo = document.querySelector( "#owner #upload-info ytd-channel-name #text-container #text" ) as HTMLDivElement;
+        let atChannel = document.querySelector( "#channel-container #meta #container #text-container #text" ) as HTMLDivElement;
+        let failSafe = document.title.replace( /^\(\d+\)\s(.+?)\s- YouTube$/, "$1" )
         let Channel =
-            document.querySelector( "#primary #channel-name yt-formatted-string.ytd-channel-name[has-link-only_]" )?.textContent
-            ||
-            document.querySelector( "#channel-name #text.ytd-channel-name" )?.textContent
+            (
+                atVideo?.offsetHeight
+                    ?
+                    atVideo.textContent
+                    : (
+                        atChannel?.offsetHeight
+                            ?
+                            atChannel.textContent
+                            :
+                            failSafe
+                    )
+            );
 
         let link = document.createElement( "a" );
         link.href = url;
